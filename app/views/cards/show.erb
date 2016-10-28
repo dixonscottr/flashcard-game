@@ -1,0 +1,7 @@
+<h3><%= @deck.name %></h3>
+
+<p><%= @card.question %></p>
+
+<form action='/guesses' method='post'>
+  <input type='text' placeholder='Answer goes here!' name='user_answer' />
+</form>
