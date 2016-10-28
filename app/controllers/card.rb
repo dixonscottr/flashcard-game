@@ -10,13 +10,12 @@ post '/guesses' do
   @round = find_round(params[:round_id])
   @deck = find_deck(params[:deck_id])
   @card = find_card(params[:card_id])
-  Guess.create(round: @round)
-
-#   if correct
-#     move to next page
-#   else
-#     create new guess
+  @next_card = (@card.id + 1)
+  @guess = Guess.create(round: @round)
+  if params[:user_answer].downcase == @card.answer.answer
+    @guess.answer = @card.answer
+    redirect "/rounds/#{@round.id}/decks/#{@deck.id}/cards/#{@next_card}"
+  else
     redirect "/rounds/#{@round.id}/decks/#{@deck.id}/cards/#{@card.id}"
-#   end
-  "You guessed: #{params[:user_answer]}"
+  end
 end
