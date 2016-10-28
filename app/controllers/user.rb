@@ -40,7 +40,6 @@ end
 
 
 get "/user/:username" do
-  @rounds = Rounds.all.where(user_id: session_user.id)
 
   erb :profile
 end
