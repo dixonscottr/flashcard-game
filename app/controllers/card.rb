@@ -14,7 +14,12 @@ post '/guesses' do
   @guess = Guess.create(round: @round)
   if params[:user_answer].downcase == @card.answer.answer.downcase
     @guess.answer = @card.answer
-    redirect "/rounds/#{@round.id}/decks/#{@deck.id}/cards/#{@next_card}"
+    if @card.id < @deck.cards.length
+      redirect "/rounds/#{@round.id}/decks/#{@deck.id}/cards/#{@next_card}"
+    else
+      #to the summary page
+      redirect '/rounds/:id'
+    end
   else
     redirect "/rounds/#{@round.id}/decks/#{@deck.id}/cards/#{@card.id}"
   end
