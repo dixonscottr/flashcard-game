@@ -12,7 +12,7 @@ post '/guesses' do
   @card = find_card(params[:card_id])
   @next_card = (@card.id + 1)
   @guess = Guess.create(round: @round)
-  if params[:user_answer].downcase == @card.answer.answer
+  if params[:user_answer].downcase == @card.answer.answer.downcase
     @guess.answer = @card.answer
     redirect "/rounds/#{@round.id}/decks/#{@deck.id}/cards/#{@next_card}"
   else
