@@ -1,8 +1,6 @@
-<h3>Flashcard Decks:</h3>
+<%= @deck.name %>
 
-<div class="container">
-  <ul>
-    <% @decks.each do |deck| %>
-    <li><a href= '/decks/<%=deck.id%>/cards/1'><%= deck.name %> </a></li>
-    <% end %>
-  </ul>
+<form action='/rounds' method='post'>
+  <input type='hidden' name="deck_id" value="<%= @deck.id%>" />
+  <input type='submit' value="Start the game!" />
+</form>

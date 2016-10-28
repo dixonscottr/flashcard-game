@@ -1,0 +1,12 @@
+<h3><%= @deck.name %></h3>
+
+<p><%= @card.question %></p>
+
+<form action='/guesses' method='post'>
+  <input type='text' placeholder='Answer goes here!' name='user_answer' />
+  <input type='hidden' name='round_id' value="<%= @round.id %>"/>
+  <input type='hidden' name='deck_id' value="<%= @deck.id %>"/>
+  <input type='hidden' name='card_id' value="<%= @card.id %>"/>
+  <input type='submit' value="Make your Guess!" />
+
+</form>
