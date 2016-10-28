@@ -1,0 +1,33 @@
+/*ul.nav li {
+    margin: 10px;
+    display: inline-block;
+    float: left;
+}*/
+
+/*h1.title {
+  display: inline;
+  float: left;
+}*/
+
+/* CSS to change 'Log Out' button to a text link */
+.link_button {
+    /* Remove all decorations to look like normal text */
+    background: none;
+    border: none;
+    display: inline;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    outline-offset: 0;
+    /* Additional styles to look like a link */
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+/* Remove extra space inside buttons in Firefox */
+input[type="button"]::-moz-focus-inner,
+button::-moz-focus-inner {
+    border: none;
+    padding: 0;
+}
