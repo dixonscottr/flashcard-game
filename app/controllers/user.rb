@@ -24,7 +24,7 @@ end
 post '/user/login' do
   new_user = User.find_by(username: params[:username]).try(:authenticate, params[:password])
   if new_user
-    session[:username] = new_user.username
+    session["username"] = new_user.username
     redirect '/'
   else
     # error message
@@ -34,6 +34,13 @@ end
 
 # user log out
 delete '/user/login' do
-  session[:username] = 'guest'
+  session["username"] = 'guest'
   redirect '/'
+end
+
+
+get "/user/:username" do
+  @rounds = Rounds.all.where(user_id: session_user.id)
+
+  erb :profile
 end
