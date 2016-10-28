@@ -1,0 +1,3 @@
+<h2> Summary Page for Playing the '<%= @round.deck.name%>' Deck </h2>
+
+<p> <%= "You've completed a round of the #{@round.deck.name} deck. You answered #{number_of_first_guesses(@round.guesses)}/#{number_of_cards(@round.deck)} cards correctly on the first try. The others...not so much. You submitted #{number_of_guesses(@round)} guesses before each card was answered correctly." %> <p>

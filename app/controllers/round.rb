@@ -4,3 +4,7 @@ post '/rounds' do
   redirect "/rounds/#{@round.id}/decks/#{@deck.id}/cards/1"
 end
 
+get '/rounds/:round_id' do
+  @round = find_round(params[:round_id])
+  erb :'rounds/show'
+end
