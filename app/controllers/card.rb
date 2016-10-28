@@ -1,20 +1,22 @@
 get '/rounds/:round_id/decks/:deck_id/cards/:card_id' do
   # binding.pry
-  @round = Round.find(params[:round_id])
-  @deck = Deck.find(params[:deck_id])
-  @card = Card.find(params[:card_id])
+  @round = find_round(params[:round_id])
+  @deck = find_deck(params[:deck_id])
+  @card = find_card(params[:card_id])
   erb :'/cards/show'
 end
 
 post '/guesses' do
-  @round = Round.find(params[:round_id])
+  @round = find_round(params[:round_id])
+  @deck = find_deck(params[:deck_id])
+  @card = find_card(params[:card_id])
   Guess.create(round: @round)
 
 #   if correct
 #     move to next page
 #   else
 #     create new guess
-#     redirect /decks/:id/cards/:id
+    redirect "/rounds/#{@round.id}/decks/#{@deck.id}/cards/#{@card.id}"
 #   end
   "You guessed: #{params[:user_answer]}"
 end
