@@ -4,4 +4,7 @@
 
 <form action='/guesses' method='post'>
   <input type='text' placeholder='Answer goes here!' name='user_answer' />
+  <input type='hidden' name='round_id' value="<%= @round.id %>"/>
+  <input type='submit' value="Make your Guess!" />
+
 </form>

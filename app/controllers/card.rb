@@ -1,11 +1,14 @@
-get '/decks/:deck_id/cards/:card_id' do
+get '/rounds/:round_id/decks/:deck_id/cards/:card_id' do
+  # binding.pry
+  @round = Round.find(params[:round_id])
   @deck = Deck.find(params[:deck_id])
   @card = Card.find(params[:card_id])
   erb :'/cards/show'
 end
 
 post '/guesses' do
-  # Guess.create()
+  @round = Round.find(params[:round_id])
+  Guess.create(round: @round)
 
 #   if correct
 #     move to next page
